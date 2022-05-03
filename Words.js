@@ -1,3 +1,9 @@
+//got list from new york times
+//https://www.nytimes.com/games/wordle/index.html
+
+
+
+
 const targetWords = [
     "cigar",
     "rebut",
