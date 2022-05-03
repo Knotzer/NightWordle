@@ -15300,14 +15300,14 @@ const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
 
-startInteraction()
+StartGame()
 
 StartGame= ()=> {
   document.addEventListener("keydown", handleKeyPress)
   document.addEventListener("click", handleMouseClick)
 }
 
-function stopInteraction() {
+StopGame =() =>{
   document.removeEventListener("click", handleMouseClick)
   document.removeEventListener("keydown", handleKeyPress)
 }
@@ -15359,7 +15359,7 @@ function pressKey(key) {
   nextTile.dataset.state = "active"
 }
 
-function deleteKey() {
+DeleteKey=() =>{
   const activeTiles = getActiveTiles()
   const lastTile = activeTiles[activeTiles.length - 1]
   if (lastTile == null) return
@@ -15368,7 +15368,7 @@ function deleteKey() {
   delete lastTile.dataset.letter
 }
 
-function submitGuess() {
+EnterAnswer=() => {
   const activeTiles = [...getActiveTiles()]
   if (activeTiles.length !== WORD_LENGTH) {
     showAlert("Not enough letters")
@@ -15386,7 +15386,7 @@ function submitGuess() {
     return
   }
 
-  stopInteraction()
+  StopGame()
   activeTiles.forEach((...params) => flipTile(...params, guess))
 }
 
@@ -15416,7 +15416,7 @@ function flipTile(tile, index, array, guess) {
         tile.addEventListener(
           "transitionend",
           () => {
-            startInteraction()
+            StartGame()
             checkWinLose(guess, array)
           },
           { once: true }
@@ -15463,7 +15463,7 @@ function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
-    stopInteraction()
+    StopGame()
     
     return
   }
@@ -15471,7 +15471,7 @@ function checkWinLose(guess, tiles) {
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
     showAlert(targetWord.toUpperCase(), null)
-    stopInteraction()
+    StopGame()
   }
 }
 
