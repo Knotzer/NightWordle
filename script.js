@@ -15302,7 +15302,7 @@ const targetWord = targetWords[Math.floor(dayOffset)]
 
 startInteraction()
 
-function startInteraction() {
+startInteraction= ()=> {
   document.addEventListener("click", handleMouseClick)
   document.addEventListener("keydown", handleKeyPress)
 }
@@ -15329,7 +15329,7 @@ function handleMouseClick(e) {
   }
 }
 
-function handleKeyPress(e) {
+ handleKeyPress = (e) => {
   if (e.key === "Enter") {
     submitGuess()
     return

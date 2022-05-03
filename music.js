@@ -36,7 +36,7 @@
 
 
 const playNextSong = () => {
-    console.log(__dirname)
+   
     const audioTag = document.getElementById("audio");
     audioTag.src = songs[Math.floor(Math.random() * songs.length)];
     audioTag.play();
