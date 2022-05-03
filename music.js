@@ -36,9 +36,10 @@
 
 
 const playNextSong = () => {
-   
+    
     const audioTag = document.getElementById("audio");
     audioTag.src = songs[Math.floor(Math.random() * songs.length)];
+    console.log(audioTag.src)
     audioTag.play();
     audioTag.onended = playNextSong;
 }

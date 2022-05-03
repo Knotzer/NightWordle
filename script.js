@@ -15302,9 +15302,9 @@ const targetWord = targetWords[Math.floor(dayOffset)]
 
 startInteraction()
 
-startInteraction= ()=> {
-  document.addEventListener("click", handleMouseClick)
+StartGame= ()=> {
   document.addEventListener("keydown", handleKeyPress)
+  document.addEventListener("click", handleMouseClick)
 }
 
 function stopInteraction() {
