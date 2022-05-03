@@ -15300,14 +15300,14 @@ const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
 
-StartGame()
+startInteraction()
 
-StartGame= ()=> {
-  document.addEventListener("keydown", handleKeyPress)
+function startInteraction() {
   document.addEventListener("click", handleMouseClick)
+  document.addEventListener("keydown", handleKeyPress)
 }
 
-StopGame =() =>{
+function stopInteraction() {
   document.removeEventListener("click", handleMouseClick)
   document.removeEventListener("keydown", handleKeyPress)
 }
@@ -15329,7 +15329,7 @@ function handleMouseClick(e) {
   }
 }
 
- handleKeyPress = (e) => {
+function handleKeyPress(e) {
   if (e.key === "Enter") {
     submitGuess()
     return
@@ -15359,7 +15359,7 @@ function pressKey(key) {
   nextTile.dataset.state = "active"
 }
 
-DeleteKey=() =>{
+function deleteKey() {
   const activeTiles = getActiveTiles()
   const lastTile = activeTiles[activeTiles.length - 1]
   if (lastTile == null) return
@@ -15368,7 +15368,7 @@ DeleteKey=() =>{
   delete lastTile.dataset.letter
 }
 
-EnterAnswer=() => {
+function submitGuess() {
   const activeTiles = [...getActiveTiles()]
   if (activeTiles.length !== WORD_LENGTH) {
     showAlert("Not enough letters")
@@ -15386,7 +15386,7 @@ EnterAnswer=() => {
     return
   }
 
-  StopGame()
+  stopInteraction()
   activeTiles.forEach((...params) => flipTile(...params, guess))
 }
 
@@ -15416,7 +15416,7 @@ function flipTile(tile, index, array, guess) {
         tile.addEventListener(
           "transitionend",
           () => {
-            StartGame()
+            startInteraction()
             checkWinLose(guess, array)
           },
           { once: true }
@@ -15463,7 +15463,7 @@ function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
-    StopGame()
+    stopInteraction()
     
     return
   }
@@ -15471,11 +15471,11 @@ function checkWinLose(guess, tiles) {
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
     showAlert(targetWord.toUpperCase(), null)
-    StopGame()
+    stopInteraction()
   }
 }
 
-danceTiles=(tiles)=> {
+function danceTiles(tiles) {
   tiles.forEach((tile, index) => {
     setTimeout(() => {
       tile.classList.add("dance")
