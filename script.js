@@ -15345,7 +15345,11 @@ function handleKeyPress(e) {
     return
   }
 }
+function PlayAgain(){
+  if(GameState!= GameState.playing){
 
+  }
+}
 function pressKey(key) {
   const activeTiles = getActiveTiles()
   if (activeTiles.length >= WORD_LENGTH) return
@@ -15460,6 +15464,7 @@ function checkWinLose(guess, tiles) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
     stopInteraction()
+    
     return
   }
 
