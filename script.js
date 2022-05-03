@@ -15475,7 +15475,7 @@ function checkWinLose(guess, tiles) {
   }
 }
 
-function danceTiles(tiles) {
+danceTiles=(tiles)=> {
   tiles.forEach((tile, index) => {
     setTimeout(() => {
       tile.classList.add("dance")
