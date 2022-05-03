@@ -28,12 +28,10 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
+  
+  border: .05em solid hsl(318, 100%, 50%);
   align-items: center;
-  background-color: hsl(
-    var(--hue, 200),
-    var(--saturation, 1%),
-    calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
-  );
+  background-color: black;
   color: white;
   fill: white;
   text-transform: uppercase;
@@ -56,16 +54,27 @@ body {
 }
 
 .key.wrong {
+  border: none;
+  box-shadow: 0px 0px 10px hsl(307, 100%, 50%);
+  background-color: hsl(307, 100%, 50%);
+  
   --lightness: 23%;
 }
 
 .key.wrong-location {
+  border: none;
+  box-shadow: 0px 0px 10px hsl(0, 100%, 50%);
+  background-color: hsl(0, 100%, 50%);
+  
   --hue: 49;
   --saturation: 51%;
   --lightness: 47%;
 }
 
 .key.correct {
+  box-shadow: 0px 0px 10px hsl(239, 100%, 50%);
+  background-color: hsl(239, 100%, 50%);
+  border: none;
   --hue: 115;
   --saturation: 29%;
   --lightness: 43%;
